@@ -50,3 +50,6 @@
     // Analisa Look Burt
     $routes->get('/analisaLookBurt', 'AnalisaLookBurt::index');
     $routes->post('/analisaLookBurt/save', 'AnalisaLookBurt::save');
+
+
+    // test aja
