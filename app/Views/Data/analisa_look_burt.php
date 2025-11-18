@@ -128,7 +128,7 @@
                                 <td><?= isset($row['tma_waduk']) ? number_format($row['tma_waduk'], 2) : '-'; ?></td>
                                 <td><?= isset($row['rembesan_bendungan']) ? number_format($row['rembesan_bendungan'], 2) : '-'; ?></td>
                                 <td><?= isset($row['panjang_bendungan']) ? number_format($row['panjang_bendungan'], 2) : '-'; ?></td>
-                                <td><?= isset($row['rembesan_per_m']) ? number_format($row['rembesan_per_m'], 4) : '-'; ?></td>
+                                <td><?= isset($row['rembesan_per_m']) ? number_format($row['rembesan_per_m'], 9) : '-'; ?></td>
                                 <td><?= isset($row['nilai_ambang_ok']) ? number_format($row['nilai_ambang_ok'], 2) : '-'; ?></td>
                                 <td><?= isset($row['nilai_ambang_notok']) ? number_format($row['nilai_ambang_notok'], 2) : '-'; ?></td>
                                 <td><?= $row['keterangan'] ?? '-'; ?></td>

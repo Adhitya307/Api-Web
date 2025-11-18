@@ -38,7 +38,7 @@
             <h4>Kontak</h4>
             <ul class="footer-contact">
               <li><i class="bi bi-geo-alt"></i> Jl. PLTA Saguling, Bandung Barat</li>
-              <li><i class="bi bi-telephone"></i> (022) 1234 5678</li>
+              <li><i class="bi bi-telephone"></i> (022) 6903489 </li>
               <li><i class="bi bi-envelope"></i> info@saguling.indonesiapower.co.id</li>
             </ul>
             

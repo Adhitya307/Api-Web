@@ -399,9 +399,9 @@
                         <td><?= $q === null ? '-' : $fmt($q, 6) ?></td>
                     <?php endforeach; ?>
 
-                    <td><?= $fmt($pbb['talang1'] ?? null, 2) ?></td>
-                    <td><?= $fmt($pbb['talang2'] ?? null, 2) ?></td>
-                    <td><?= $fmt($pbb['pipa'] ?? null, 2) ?></td>
+                    <td><?= $fmt($pbb['talang1'] ?? null, 3) ?></td>
+                    <td><?= $fmt($pbb['talang2'] ?? null, 3) ?></td>
+                    <td><?= $fmt($pbb['pipa'] ?? null, 3) ?></td>
 
                     <td><?= $fmt($pig['a1'] ?? null, 2) ?></td>
                     <td><?= $fmt($pig['ambang_a1'] ?? null, 2) ?></td>

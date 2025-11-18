@@ -22,18 +22,22 @@
   <link rel="stylesheet" href="<?= base_url('css/data.css') ?>">
 
   <style>
-    /* Professional Header */
+    /* Professional Header - Warna disamakan dengan home */
     .main-header {
-      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2C5F9E 100%);
       color: white;
       padding: 1rem 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     
     .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
     
     .branding {
@@ -78,6 +82,38 @@
       font-size: 0.8rem;
       opacity: 0.8;
     }
+
+    /* Tombol Back Styles - Posisi Kanan Pojok */
+    .back-button {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(-3px);
+      color: white;
+      text-decoration: none;
+    }
+
+    .back-button i {
+      font-size: 0.9rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
     
     .main-nav .nav-menu {
       display: flex;
@@ -96,10 +132,21 @@
       align-items: center;
       gap: 0.5rem;
       transition: background-color 0.3s;
+      cursor: pointer;
     }
     
     .nav-link:hover, .nav-link.active {
       background-color: rgba(255,255,255,0.15);
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Section styling untuk anchor target */
+    section {
+      scroll-margin-top: 80px;
     }
     
     /* Responsive adjustments */
@@ -110,8 +157,8 @@
       }
       
       .branding {
-        flex-direction: column;
-        text-align: center;
+        width: 100%;
+        justify-content: flex-start;
       }
       
       .logo-divider {
@@ -122,6 +169,59 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+      
+      section {
+        scroll-margin-top: 120px;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .back-button span {
+        display: none;
+      }
+      
+      .back-button {
+        padding: 0.5rem;
+      }
+      
+      .back-button i {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .company-title {
+        font-size: 1rem;
+      }
+
+      .unit-name {
+        font-size: 0.8rem;
+      }
+
+      .system-name {
+        font-size: 0.7rem;
+      }
+
+      .branding {
+        flex-direction: column;
+        text-align: left;
+        gap: 0.5rem;
+      }
+
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-divider {
+        display: block;
+        height: 30px;
+      }
     }
   </style>
 </head>
@@ -129,6 +229,7 @@
   <!-- Professional Header -->
   <header class="main-header">
     <div class="header-container container-lg">
+      <!-- Branding di Kiri -->
       <div class="branding">
         <div class="logo-group">
           <img src="<?= base_url('img/logo_indonesia_power.png') ?>" alt="Logo Indonesia Power" class="main-logo">
@@ -142,36 +243,38 @@
           <p class="system-name">Sistem Monitoring Operasional PLTA</p>
         </div>
       </div>
-      
-      <nav class="main-nav">
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="<?= base_url() ?>" class="nav-link <?= current_url() == base_url() ? 'active' : '' ?>">
-              <i class="bi bi-house-door"></i>
-              <span>Beranda</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('input-data') ?>" class="nav-link <?= strpos(current_url(), 'input-data') !== false ? 'active' : '' ?>">
-              <i class="bi bi-table"></i>
-              <span>Data Rembesan</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('grafik') ?>" class="nav-link <?= strpos(current_url(), 'grafik') !== false ? 'active' : '' ?>">
-              <i class="bi bi-graph-up"></i>
-              <span>Grafik</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#kontak" class="nav-link">
-              <i class="bi bi-telephone"></i>
-              <span>Kontak</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+
+      <!-- Tombol Back di Kanan -->
+      <div class="header-actions">
+        <a href="javascript:history.back()" class="back-button">
+          <i class="bi bi-arrow-left"></i>
+          <span>Kembali</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="flex-shrink-0">
+  <!-- Konten halaman -->
+  <main>
+    <!-- Konten halaman Anda di sini -->
+  </main>
+
+  <script>
+    // Fungsi untuk tombol back yang lebih cerdas
+    document.addEventListener('DOMContentLoaded', function() {
+      const backButton = document.querySelector('.back-button');
+      
+      // Cek jika tidak ada history sebelumnya, sembunyikan tombol back
+      if (!document.referrer || document.referrer === window.location.href) {
+        backButton.style.display = 'none';
+      }
+      
+      // Tambahkan event listener untuk log (opsional)
+      backButton.addEventListener('click', function(e) {
+        console.log('Navigating back from: ' + window.location.href);
+        // Bisa tambahkan tracking analytics di sini
+      });
+    });
+  </script>
+</body>
+</html>
